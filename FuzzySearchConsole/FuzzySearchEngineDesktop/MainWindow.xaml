@@ -1,0 +1,33 @@
+﻿<Window x:Class="FuzzySearchEngineDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FuzzySearchEngineDesktop"
+        mc:Ignorable="d"
+        Title="Search Engine" Height="378" Width="518"
+        ContentRendered="Window_Activated">
+    <Grid Margin="2,2,2,2">
+        <Label Content="Your query:" HorizontalAlignment="Left" Height="26" Margin="10,10,0,0" VerticalAlignment="Top" Width="81"/>
+        <TextBox Name="queryTextBox" IsEnabled="False" UIElement.GotFocus="TextBox_GotFocus" 
+                 UIElement.KeyUp="TextBox_KeyUp" HorizontalAlignment="Left" Height="26" 
+                 Margin="91,10,0,0" TextWrapping="NoWrap" Text="Please wait..." 
+                 TextElement.FontStyle="Italic" TextElement.FontWeight="Light" TextAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Top"  Width="323" />
+        <Label Name="resultsCountLabel" Content="#result" Visibility="Hidden" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top" Width="81"/>
+        <Label Name="timeLabel" Content="#seconds" Visibility="Hidden" HorizontalAlignment="Left" Height="24" Margin="10,65,0,0" VerticalAlignment="Top" Width="76"/>
+        <ListView MinWidth="50" Name="resultsListView" HorizontalAlignment="Left" Height="292" Margin="91,41,0,0" VerticalAlignment="Top" Width="405">
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="pED" Width="40" DisplayMemberBinding="{Binding PED}" />
+                    <GridViewColumn Header="Description" Width="auto" DisplayMemberBinding="{Binding Desc}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Delta:" HorizontalAlignment="Left" Height="26" Margin="419,10,0,0" VerticalAlignment="Top" Width="41"/>
+        <TextBox KeyUp="DeltaTextBox_KeyUp" Name="deltaTextBox" IsEnabled="False" HorizontalAlignment="Left" Height="26" Margin="465,10,0,0" TextAlignment="Center" 
+                 VerticalContentAlignment="Center" TextWrapping="NoWrap" Text=""
+                 VerticalAlignment="Top" Width="31"/>
+
+    </Grid>
+</Window>
